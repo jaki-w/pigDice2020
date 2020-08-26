@@ -8,6 +8,33 @@
   <script src="js/scripts.js"></script>
 </head>
 <body>
+  <h1>Pig Dice</h1>
+  <div id="rules">
+    <p>these are the rules!</p>
+    <button id="newGame">Let's play Pig!</button>
+  </div>
+
+  <div id="scoreBoard">
+    <p>Player 1 Score: <span id="player1Score"></span></p>
+    <p>Player 2 Score: <span id="player2Score"></span></p>
+  </div>
+
+  <div id="gameBoard" class="showLater">
+    <div class="row">
+      <div id="player1Board" class="col-md-6">
+        <h2>Player 1</h2>
+        <button id="roll1">Roll</button>
+        <button id="hold1">Hold</button>
+        <p id="player1TurnTotal"></p>
+      </div>
+      <div id="player2Board" class="col-md-6">
+        <h2>Player 2</h2>
+        <button id="roll2">Roll</button>
+        <button id="hold2">Hold</button>
+        <p id="player2TurnTotal"></p>
+      </div>
+    </div>
+  </div>
   
 </body>
 </html>
