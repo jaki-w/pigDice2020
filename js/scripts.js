@@ -4,7 +4,17 @@ function Game() {
   this.currentId = 0;
 }
 
-function Player() {
+Game.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+}
+
+Game.prototype.newPlayer = function(player) {
+  player.id = this.assignId();
+  this.players.push(player);
+}
+
+function Player(turnScore, score) {
   this.turnScore = turnScore,
   this.score = score;
 }
@@ -12,6 +22,7 @@ function Player() {
 // A random number between 1 & 6 is generated 
 function generateRandomNumber() {
   let randomNumber = Math.floor(Math.random() * 6) + 1;
+  $("#player1TurnTotal").text(randomNumber);
   return randomNumber;
 }
 
@@ -22,13 +33,17 @@ function generateRandomNumber() {
 Player.prototype.rollDice = function() {
   let roll = generateRandomNumber();
 
-  if (roll === 1) {
-    this.turnScore = 0;
+  this.score += roll;
+  $("#player1Score").text(this.score);
+
+  
+
+  // if (roll === 1) {
+  //   this.turnScore = 0;
     // showRoll();
     // turnEnd();
-  } 
+  // } 
 }
-
 // function showRoll() {
 //   $("#currentRoll").text(roll);
 // }
@@ -53,7 +68,23 @@ Player.prototype.rollDice = function() {
 
 //Prototype: Game/ assignId
 
-
-
+$(document).ready(function() {
+  $("#newGame").click(function(event) {
+    event.preventDefault();
+    let game = new Game();
+    let player1 = new Player();
+    let player2 = new Player();
+    game.newPlayer(player1);
+    game.newPlayer(player2);
+    console.log(game);
+    console.log(player1);
+    console.log(player2);
+  })
+  $("#roll1").click(function(event) {
+    event.preventDefault();
+    generateRandomNumber();
+    player.rollDice();
+  })
+})
 
 
